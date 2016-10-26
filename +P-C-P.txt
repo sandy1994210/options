@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+k1=8500 #履約價
+k2=8700
+k3=8900
+premiun_call=5 #權利金
+premiun_put=5
+
+interval=500
+ST = np.arange(k1-interval,k3+interval) #到期價
+
+
+payoff_scall=np.maximum(ST-k2,0) #獲利
+payoff_lput=np.maximum(k1-ST,0)
+payoff_sput=np.maximum(k3-ST,0)
+
+long_put=payoff_lput-premiun_put 
+
+short_call=-payoff_scall+premiun_call 
+
+short_put=-payoff_sput+premiun_put 
+
+
+
+test=long_put+short_call+short_put
+plt.plot(ST,test)
+
+
+plt.xlabel("ST") 
+plt.ylabel("payoff")   
+plt.title("+p-c-p") 
+
+plt.show()

@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+k=50 #履約價
+premiun_put=5 #權利金
+
+interval=100
+ST = np.arange(k-interval,k+interval) #到期價
+payoff=np.maximum(k-ST,0) #獲利
+short_put=-payoff+premiun_put 
+plt.plot(ST,short_put)
+long_put=payoff-premiun_put 
+plt.plot(ST,long_put)
+    
+plt.axhline(0, color='gray')
+plt.xlabel("ST") 
+plt.ylabel("payoff") 
+plt.title("+P-P") 
+
+plt.show()

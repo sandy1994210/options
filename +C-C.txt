@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+k=50 #履約價
+premiun_call=5 #權利金
+
+interval=100
+ST = np.arange(k-interval,k+interval) #到期價
+payoff=np.maximum(ST-k,0) #獲利
+short_call=-payoff+premiun_call 
+plt.plot(ST,short_call)
+long_call=payoff-premiun_call 
+plt.plot(ST,long_call)
+
+plt.xlabel("ST") 
+plt.ylabel("payoff") 
+plt.title("+C&-C") 
+
+plt.show()
